@@ -1,0 +1,45 @@
+.mylink{
+    padding: 30px;
+    text-align: center;
+    display: block;
+    font-size: 22px;
+}
+
+#link1{
+    background-color: lightgreen;
+    color: red;
+}
+
+#link2{
+    background-color: dimgray;
+    color: yellow;
+}
+
+#link3{
+    background-color: black;
+    color: white;
+}
+
+#title{
+    background-color: beige;
+    color: green;
+    padding: 10px;
+}
+
+#list-title{
+    background-color: #6f95a3;
+    color: white;
+    padding: 15px;
+}
+
+a:visited{
+    text-decoration: underline;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
+a:active{
+    color: blue;
+}

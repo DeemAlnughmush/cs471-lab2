@@ -9,7 +9,9 @@
     <link rel="icon" href="{% static 'qu-icon.png' %}"> 
     <meta charset="UTF-8"> 
     <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- include css file --> 
-    {% block stylesheets %}{% endblock stylesheets %} 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css"> 
+    {% block stylesheets %}{% endblock stylesheets %}
+     
 </head> 
 <body> 
     {% include "includes/header.html" %} 
