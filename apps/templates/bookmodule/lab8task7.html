@@ -1,0 +1,6 @@
+<h1>Students in Each City</h1>
+
+{% for item in data %}
+    <p>City: {{ item.address__city }} - Number of Students: {{ item.num_students }}</p>
+    <hr>
+{% endfor %}
