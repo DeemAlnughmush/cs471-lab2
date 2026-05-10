@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Documents List</h1>
+
+<a href="/books/lab11/task3/adddocument">Add Document</a>
+
+<hr>
+
+{% for document in documents %}
+    <p>Title: {{ document.title }}</p>
+
+    {% if document.coverPage %}
+        <img src="{{ document.coverPage.url }}" width="150">
+    {% endif %}
+
+    <br>
+    <a href="/books/lab11/task3/deletedocument/{{ document.id }}">Delete</a>
+    <hr>
+{% endfor %}
+{% endblock %}

@@ -23,3 +23,19 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
+
+class Address2(models.Model):
+    city = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.city
+
+
+class Student2(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    addresses = models.ManyToManyField(Address2)
+
+class Document(models.Model):
+    title = models.CharField(max_length=100)
+    coverPage = models.ImageField(upload_to='documents/')

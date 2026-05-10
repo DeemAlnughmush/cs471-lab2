@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Students List - Many to Many</h1>
+
+<a href="/books/lab11/task2/addstudent">Add Student</a>
+
+<hr>
+
+{% for student in students %}
+    <p>
+        ID: {{ student.id }} |
+        Name: {{ student.name }} |
+        Age: {{ student.age }}
+    </p>
+
+    <p>Addresses:</p>
+    <ul>
+        {% for address in student.addresses.all %}
+            <li>{{ address.city }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/books/lab11/task2/editstudent/{{ student.id }}">Edit</a>
+    |
+    <a href="/books/lab11/task2/deletestudent/{{ student.id }}">Delete</a>
+
+    <hr>
+{% endfor %}
+
+{% endblock %}

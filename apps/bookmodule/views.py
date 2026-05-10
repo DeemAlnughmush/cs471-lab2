@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from .models import Book
 from django.db.models import Q 
 from django.db.models import Count, Sum, Avg, Max, Min
-from .models import Student
-from .forms import BookForm
+from .models import Student ,Student2 , Document
+from .forms import BookForm , StudentForm ,Student2Form , DocumentForm
 
 def index(request): 
     return render(request, "bookmodule/index.html") 
@@ -191,3 +191,99 @@ def delete_book_part2(request, id):
     book = Book.objects.get(id=id)
     book.delete()
     return redirect('/books/lab9_part2/listbooks')
+
+
+def list_students(request):
+    students = Student.objects.all()
+    return render(request, 'bookmodule/list_students.html', {'students': students})
+
+
+def add_student(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/books/lab11/task1/students')
+    else:
+        form = StudentForm()
+
+    return render(request, 'bookmodule/student_form.html', {'form': form})
+
+
+def edit_student(request, id):
+    student = Student.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = StudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('/books/lab11/task1/students')
+    else:
+        form = StudentForm(instance=student)
+
+    return render(request, 'bookmodule/student_form.html', {'form': form})
+
+
+def delete_student(request, id):
+    student = Student.objects.get(id=id)
+    student.delete()
+    return redirect('/books/lab11/task1/students')
+
+
+def list_students2(request):
+    students = Student2.objects.all()
+    return render(request, 'bookmodule/list_students2.html', {'students': students})
+
+
+def add_student2(request):
+    if request.method == 'POST':
+        form = Student2Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/books/lab11/task2/students')
+    else:
+        form = Student2Form()
+
+    return render(request, 'bookmodule/student2_form.html', {'form': form})
+
+
+def edit_student2(request, id):
+    student = Student2.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = Student2Form(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('/books/lab11/task2/students')
+    else:
+        form = Student2Form(instance=student)
+
+    return render(request, 'bookmodule/student2_form.html', {'form': form})
+
+
+def delete_student2(request, id):
+    student = Student2.objects.get(id=id)
+    student.delete()
+    return redirect('/books/lab11/task2/students')
+
+def list_documents(request):
+    documents = Document.objects.all()
+    return render(request, 'bookmodule/list_documents.html', {'documents': documents})
+
+
+def add_document(request):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/books/lab11/task3/documents')
+    else:
+        form = DocumentForm()
+
+    return render(request, 'bookmodule/document_form.html', {'form': form})
+
+
+def delete_document(request, id):
+    document = Document.objects.get(id=id)
+    document.delete()
+    return redirect('/books/lab11/task3/documents')
