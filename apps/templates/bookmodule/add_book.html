@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<h2>Add New Book</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Title:</label><br>
+    <input type="text" name="title"><br><br>
+
+    <label>Author:</label><br>
+    <input type="text" name="author"><br><br>
+
+    <label>Price:</label><br>
+    <input type="number" step="0.01" name="price"><br><br>
+
+    <label>Edition:</label><br>
+    <input type="number" name="edition"><br><br>
+
+    <button type="submit">Add Book</button>
+
+</form>
+
+{% endblock %}
